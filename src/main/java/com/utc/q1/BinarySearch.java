@@ -4,6 +4,9 @@ import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.Arrays;
 
 public class BinarySearch {
@@ -28,19 +31,22 @@ public class BinarySearch {
     return indexOf(a, key);
   }
   
-  public static void main(String[] args) {
-    
+  public static void main(String[] args) throws IOException {
+  
+//    System.setIn(new FileInputStream(new File("largeT.txt")));
+    System.setIn(new FileInputStream(new File("tinyT.txt")));
+    //System.setOut(new PrintStream("blacklist.txt"));
     // read the integers from a file
     In in = new In(args[0]);
-    int[] allowlist = in.readAllInts();
-    
+    int[] whitelist = in.readAllInts();
     // sort the array
-    Arrays.sort(allowlist);
+    Arrays.sort(whitelist);
     
-    // read integer key from standard input; print if not in allowlist
+    
+    // read integer key from standard input; print if not in whitelist
     while (!StdIn.isEmpty()) {
       int key = StdIn.readInt();
-      if (BinarySearch.indexOf(allowlist, key) == -1)
+      if (BinarySearch.indexOf(whitelist, key) == -1)
         StdOut.println(key);
     }
   }
