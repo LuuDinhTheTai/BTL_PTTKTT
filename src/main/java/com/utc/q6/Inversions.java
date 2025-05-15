@@ -48,6 +48,16 @@ public class Inversions {
     return inversions;
   }
   
+  
+  /**
+   * Returns the number of inversions in the integer array.
+   * The argument array is not modified.
+   *
+   * @param a the array
+   * @return the number of inversions in the array. An inversion is a pair of
+   * indicies {@code i} and {@code j} such that {@code i < j}
+   * and {@code a[i] > a[j]}.
+   */
   public static long count(int[] a) {
     int[] b = new int[a.length];
     int[] aux = new int[a.length];
@@ -56,6 +66,7 @@ public class Inversions {
     long inversions = count(a, b, aux, 0, a.length - 1);
     return inversions;
   }
+  
   
   // merge and count (Comparable version)
   private static <Key extends Comparable<Key>> long merge(Key[] a, Key[] aux, int lo, int mid, int hi) {
@@ -92,6 +103,17 @@ public class Inversions {
     return inversions;
   }
   
+  
+  /**
+   * Returns the number of inversions in the comparable array.
+   * The argument array is not modified.
+   *
+   * @param a     the array
+   * @param <Key> the inferred type of the elements in the array
+   * @return the number of inversions in the array. An inversion is a pair of
+   * indicies {@code i} and {@code j} such that {@code i < j}
+   * and {@code a[i].compareTo(a[j]) > 0}.
+   */
   public static <Key extends Comparable<Key>> long count(Key[] a) {
     Key[] b = a.clone();
     Key[] aux = a.clone();
@@ -123,6 +145,12 @@ public class Inversions {
     return inversions;
   }
   
+  /**
+   * Reads a sequence of integers from standard input and
+   * prints the number of inversions to standard output.
+   *
+   * @param args the command-line arguments
+   */
   public static void main(String[] args) throws IOException {
     System.setIn(new FileInputStream(new File("tinyIn.txt")));
     int[] a = StdIn.readAllInts();
@@ -136,4 +164,3 @@ public class Inversions {
     StdOut.println(Inversions.count(b));
   }
 }
-

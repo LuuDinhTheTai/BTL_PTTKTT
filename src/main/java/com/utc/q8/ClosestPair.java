@@ -14,6 +14,13 @@ public class ClosestPair {
   private Point2D best1, best2;
   private double bestDistance = Double.POSITIVE_INFINITY;
   
+  /**
+   * Computes the closest pair of points in the specified array of points.
+   *
+   * @param points the array of points
+   * @throws IllegalArgumentException if {@code points} is {@code null} or if any
+   *                                  entry in {@code points[]} is {@code null}
+   */
   public ClosestPair(Point2D[] points) {
     if (points == null) throw new IllegalArgumentException("constructor argument is null");
     for (int i = 0; i < points.length; i++) {
@@ -95,14 +102,33 @@ public class ClosestPair {
     return delta;
   }
   
+  /**
+   * Returns one of the points in the closest pair of points.
+   *
+   * @return one of the two points in the closest pair of points;
+   * {@code null} if no such point (because there are fewer than 2 points)
+   */
   public Point2D either() {
     return best1;
   }
   
+  /**
+   * Returns the other point in the closest pair of points.
+   *
+   * @return the other point in the closest pair of points
+   * {@code null} if no such point (because there are fewer than 2 points)
+   */
   public Point2D other() {
     return best2;
   }
   
+  /**
+   * Returns the Euclidean distance between the closest pair of points.
+   *
+   * @return the Euclidean distance between the closest pair of points
+   * {@code Double.POSITIVE_INFINITY} if no such pair of points
+   * exist (because there are fewer than 2 points)
+   */
   public double distance() {
     return bestDistance;
   }
@@ -130,6 +156,16 @@ public class ClosestPair {
     }
   }
   
+  
+  /**
+   * Unit tests the {@code ClosestPair} data type.
+   * Reads in an integer {@code n} and {@code n} points (specified by
+   * their <em>x</em>- and <em>y</em>-coordinates) from standard input;
+   * computes a closest pair of points; and prints the pair to standard
+   * output.
+   *
+   * @param args the command-line arguments
+   */
   public static void main(String[] args) throws IOException {
     System.setIn(new FileInputStream(new File("rs1423.txt")));
     int n = StdIn.readInt();

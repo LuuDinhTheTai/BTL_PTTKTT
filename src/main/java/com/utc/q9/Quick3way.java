@@ -14,6 +14,11 @@ public class Quick3way {
   private Quick3way() {
   }
   
+  /**
+   * Rearranges the array in ascending order, using the natural order.
+   *
+   * @param a the array to be sorted
+   */
   public static void sort(Comparable[] a) {
     StdRandom.shuffle(a);
     sort(a, 0, a.length - 1);
@@ -39,6 +44,11 @@ public class Quick3way {
     assert isSorted(a, lo, hi);
   }
   
+  
+  /***************************************************************************
+   *  Helper sorting functions.
+   ***************************************************************************/
+  
   // is v < w ?
   private static boolean less(Comparable v, Comparable w) {
     return v.compareTo(w) < 0;
@@ -51,6 +61,10 @@ public class Quick3way {
     a[j] = swap;
   }
   
+  
+  /***************************************************************************
+   *  Check if array is sorted - useful for debugging.
+   ***************************************************************************/
   private static boolean isSorted(Comparable[] a) {
     return isSorted(a, 0, a.length - 1);
   }
@@ -61,6 +75,7 @@ public class Quick3way {
     return true;
   }
   
+  
   // print array to standard output
   private static void show(Comparable[] a) {
     for (int i = 0; i < a.length; i++) {
@@ -68,6 +83,12 @@ public class Quick3way {
     }
   }
   
+  /**
+   * Reads in a sequence of strings from standard input; 3-way
+   * quicksorts them; and prints them to standard output in ascending order.
+   *
+   * @param args the command-line arguments
+   */
   public static void main(String[] args) throws IOException {
     System.setIn(new FileInputStream(new File("tiny.txt")));
     String[] a = StdIn.readAllStrings();

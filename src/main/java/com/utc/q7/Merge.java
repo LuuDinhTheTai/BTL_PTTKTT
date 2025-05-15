@@ -46,17 +46,30 @@ public class Merge {
     merge(a, aux, lo, mid, hi);
   }
   
+  /**
+   * Rearranges the array in ascending order, using the natural order.
+   *
+   * @param a the array to be sorted
+   */
   public static void sort(Comparable[] a) {
     Comparable[] aux = new Comparable[a.length];
     sort(a, aux, 0, a.length - 1);
     assert isSorted(a);
   }
   
+  
+  /***************************************************************************
+   *  Helper sorting function.
+   ***************************************************************************/
+  
   // is v < w ?
   private static boolean less(Comparable v, Comparable w) {
     return v.compareTo(w) < 0;
   }
   
+  /***************************************************************************
+   *  Check if array is sorted - useful for debugging.
+   ***************************************************************************/
   private static boolean isSorted(Comparable[] a) {
     return isSorted(a, 0, a.length - 1);
   }
@@ -67,6 +80,10 @@ public class Merge {
     return true;
   }
   
+  
+  /***************************************************************************
+   *  Index mergesort.
+   ***************************************************************************/
   // stably merge a[lo .. mid] with a[mid+1 .. hi] using aux[lo .. hi]
   private static void merge(Comparable[] a, int[] index, int[] aux, int lo, int mid, int hi) {
     
@@ -85,6 +102,13 @@ public class Merge {
     }
   }
   
+  /**
+   * Returns a permutation that gives the elements in the array in ascending order.
+   *
+   * @param a the array
+   * @return a permutation {@code p[]} such that {@code a[p[0]]}, {@code a[p[1]]},
+   * ..., {@code a[p[n-1]]} are in ascending order
+   */
   public static int[] indexSort(Comparable[] a) {
     int n = a.length;
     int[] index = new int[n];
@@ -112,6 +136,12 @@ public class Merge {
     }
   }
   
+  /**
+   * Reads in a sequence of strings from standard input; mergesorts them;
+   * and prints them to standard output in ascending order.
+   *
+   * @param args the command-line arguments
+   */
   public static void main(String[] args) throws IOException {
     System.setIn(new FileInputStream(new File("tiny.txt")));
     String[] a = StdIn.readAllStrings();
